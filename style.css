@@ -5,6 +5,9 @@
     background-color: rgb(58, 93, 211);
     padding:5px;
     width: 500px;
+    left:36%;
+    margin-top:300px;
+    position: relative;
     
 }
 
@@ -16,7 +19,16 @@
     
   }
 
+.show-container{
+    position: flex;
+    border: solid 5px;
+    margin: 10px;
+    left:36%;
+    top: 50%;
+    width:340px;
+    top: 100px;
 
+}
 .button1{
     grid-row: 1/3;
 }
