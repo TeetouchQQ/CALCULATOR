@@ -36,8 +36,7 @@ function operator(x){
         case 'clearE':
             clearE();
             break;
-        case 'negate':
-            
+
         case 'Equal':
 
             break;
@@ -63,6 +62,20 @@ function minus(num1,num2){
 }
 function mutiple(num1,num2){
     return Number(Number(num1) * Number(num2));
+}
+function negate(){
+    var check = now_value.slice(0,1);
+    console.log('check is '+ check);
+    if (check != '-'){
+        now_value = '-' + now_value;
+
+    }else{
+        console.log('minus')
+        now_value = now_value.slice(1);
+
+    }
+
+    document.getElementById("now_value").innerHTML = now_value;
 }
 function clearAll(){
     past_value = '';
