@@ -10,7 +10,7 @@ function addNum(x){
 }
 function Del(){
     now_value = now_value.slice(0,-1);
-    console.log(now_value);
+    //console.log(now_value);
     document.getElementById("now_value").innerHTML = now_value;
 }
 function operator(x){
@@ -26,9 +26,13 @@ function operator(x){
             show_value = show_value + now_value + ' - ';
             break;
         case 'multiple':
-            Cal_value = mutiple(Cal_value,now_value);
-            //show_value.push((now_value + ' x '));
-            show_value = show_value + now_value + ' x '
+            if (Cal_value == 0){
+                Cal_value = 1;
+            }
+            
+            //console.log("cal value 2 : "+Cal_value);
+            Cal_value = now_value;
+            show_value = show_value +  ' x ';
             break;
         case 'clearAll':
             clearAll();
@@ -36,21 +40,14 @@ function operator(x){
         case 'clearE':
             clearE();
             break;
-
-        case 'Equal':
-
-            break;
     }
-    console.log('show is ' + now_value)
+
+    //console.log('show is ' + now_value)
     now_value = '';
     
     document.getElementById("last_value").innerHTML = show_value;
     document.getElementById("now_value").innerHTML = now_value;
 }
-
-
-
-
 
 function plus(num1,num2){
     result =  Number(Number(num1) + Number(num2));
@@ -61,7 +58,7 @@ function minus(num1,num2){
     return Number(Number(num1) - Number(num2));
 }
 function mutiple(num1,num2){
-    return Number(Number(num1) * Number(num2));
+    return Number(num1) * Number(num2);
 }
 function negate(){
     var check = now_value.slice(0,1);
@@ -91,8 +88,10 @@ function clearE(){
     document.getElementById("now_value").innerHTML = now_value;
 }
 function Equal(){
-    //console.log(show_value.slice(-2));
+    //console.log('slice :' + show_value.slice(-2));
     let op = show_value.slice(-2);
+    //console.log('Cal : '+ Cal_value);
+    //console.log('now : '+ now_value);
     switch(op){
         case '+ ':
             Cal_value = plus(Cal_value,now_value);
@@ -105,18 +104,27 @@ function Equal(){
             show_value = show_value + now_value + ' - ';
             break;
         case 'x ':
-            Cal_value = mutiple(Cal_value,now_value);
+            //Cal_value = mutiple(Cal_value,now_value);
             //show_value.push((now_value + ' x '));
-            show_value = show_value + now_value + ' x '
+            Cal_value = Cal_value * now_value;
+            console.log('Cal_value:' + Cal_value)
+            
+            show_value = show_value + now_value + ' x ';
             break;
 
     }
     show_value = Cal_value;
-    now_value = '';
+    
+    now_value = Cal_value;
     document.getElementById("last_value").innerHTML = '';
     document.getElementById("now_value").innerHTML = Cal_value;
     console.log(show_value);
 
+}
+function showAll(){
+    console.log('Cal value :'+Cal_value);
+    console.log('Show value :'+show_value);
+    console.log('Now value : '+now_value);
 
 }
 
