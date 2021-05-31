@@ -16,23 +16,32 @@ function Del(){
 function operator(x){
     switch(x){
         case 'plus':
-            Cal_value = plus(Cal_value,now_value);
-
-            show_value = show_value + now_value + ' + ';
+            //Cal_value = plus(Cal_value,now_value);
+            
+            //show_value = show_value + now_value + ' + ';
+            //show_value = show_value + now_value + ' + ';
+            show_value = show_value +  ' + ';
+            Cal_value = now_value;
             break;
         case 'minus':
-            Cal_value = minus(Cal_value,now_value);
+            //Cal_value = minus(Cal_value,now_value);
             //show_value.push((now_value + ' - '));
-            show_value = show_value + now_value + ' - ';
+            show_value = show_value +  ' - ';
+            Cal_value = now_value;
+            
             break;
         case 'multiple':
             if (Cal_value == 0){
                 Cal_value = 1;
             }
-            
-            //console.log("cal value 2 : "+Cal_value);
             Cal_value = now_value;
             show_value = show_value +  ' x ';
+            break;
+        case 'divine':
+            console.log('divine');
+            Cal_value = now_value;
+            console.log('cal value:' + Cal_value);
+            show_value = show_value +  ' / ';
             break;
         case 'clearAll':
             clearAll();
@@ -60,6 +69,7 @@ function minus(num1,num2){
 function mutiple(num1,num2){
     return Number(num1) * Number(num2);
 }
+
 function negate(){
     var check = now_value.slice(0,1);
     console.log('check is '+ check);
@@ -104,13 +114,15 @@ function Equal(){
             show_value = show_value + now_value + ' - ';
             break;
         case 'x ':
-            //Cal_value = mutiple(Cal_value,now_value);
-            //show_value.push((now_value + ' x '));
             Cal_value = Cal_value * now_value;
             console.log('Cal_value:' + Cal_value)
-            
             show_value = show_value + now_value + ' x ';
             break;
+        case '/ ':
+            Cal_value = Number(Cal_value)/Number(now_value);
+            console.log('Cal_value equal:' + Cal_value)
+            show_value = show_value + now_value + ' / ';
+            break;            
 
     }
     show_value = Cal_value;
@@ -127,7 +139,13 @@ function showAll(){
     console.log('Now value : '+now_value);
 
 }
+function dot(){
+   if (now_value.indexOf('.') == -1){
+       now_value = now_value + '.';
 
+   }
+   document.getElementById("now_value").innerHTML = now_value;
+}
 
 
 
